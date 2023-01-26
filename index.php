@@ -14,15 +14,9 @@
     </form>
 
     <?php
-        if(isset($_GET['length'])) {
-            $length = $_GET['length'];
-            $characters = array_merge(range('a','z'), range('A','Z'), range(0,9), array('!','@','#','$','%','^','&','*'));
-            $password = "";
-            for($i = 0; $i < $length; $i++) {
-                $password .= $characters[array_rand($characters)];
-            }
-            echo "La tua password: " . $password;
-        }
+        $length = isset($_GET['length']) ? $_GET['length'] : 0;
+        include_once './function.php';
+         echo "La tua password: "  . generate_password($length);
     ?>
     </body>
 </html>
